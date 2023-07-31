@@ -9,9 +9,11 @@ const UserDetail = () => {
         <div className="content">
           <div className="admin-table">
             <div className="admin-subtitle">List of User Details</div>
+            <button className="btn add-btn">Add new Users</button>
           </div>
-          <button className="btn add-btn">Add new Users</button>
+
           <ul>
+            <li></li>
             <li></li>
           </ul>
           <hr />
