@@ -1,18 +1,32 @@
 import { AiFillDelete } from "react-icons/ai";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { removeUser } from "../store/slices/userSlice";
 
 const DisplayUser = () => {
+  const dispatch = useDispatch();
+
   const userData = useSelector((state) => {
     return state.user;
   });
 
+  const removeOne = (id) => {
+    dispatch(removeUser(id));
+  };
+
   return (
     <>
       <Wrapper>
-        {userData.map((user, key) => {
-          return <li key={key}>{user}</li>;
+        {userData.map((user, id) => {
+          return (
+            <li key={id}>
+              {user}
+              <button className=" btn-delete" onClick={() => removeOne(id)}>
+                <AiFillDelete className="delete-icon" />
+              </button>
+            </li>
+          );
         })}
       </Wrapper>
     </>
